@@ -2,10 +2,13 @@ $(function() {
 
   function getQuote() {
     $.ajax({
-      url: "http://quotzzy.co/api/quote",
+      url: "http://api.forismatic.com/api/1.0/?",
+      dataType: "jsonp",
+      data: "method=getQuote&format=jsonp&lang=en&jsonp=?",
       success: function(data) {
-        $('#quote').html("\"" + data.text + "\"");
-        $('#author').attr('href', data.author.wiki).html(data.author.name);
+        console.log(data);
+        $('#quote').html("\"" + data.quoteText + "\"");
+        $('#author').html(data.quoteAuthor);
       }
      }); 
   }
